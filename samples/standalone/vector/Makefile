@@ -12,7 +12,7 @@ LIBS    = -lm
 # Optionally force single-precision floats (default is double)
 # CFLAGS += -DCONFIG_ZSL_SINGLE_PRECISION=y
 
-_OBJ = main.o matrices.o vectors.o zsl.o
+_OBJ = main.o matrices.o vectors.o statistics.o zsl.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c
@@ -30,6 +30,11 @@ $(ODIR)/matrices.o: $(BASEDIR)/src/matrices.c
 $(ODIR)/vectors.o: $(BASEDIR)/src/vectors.c
 	@mkdir -p $(ODIR)
 	@echo Compiling $(ODIR)/vectors.o
+	@$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/statistics.o: $(BASEDIR)/src/statistics.c
+	@mkdir -p $(ODIR)
+	@echo Compiling $(ODIR)/statistics.o
 	@$(CC) -c -o $@ $< $(CFLAGS)
 
 $(ODIR)/zsl.o: $(BASEDIR)/src/zsl.c

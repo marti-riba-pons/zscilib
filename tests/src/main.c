@@ -6,6 +6,14 @@
 
 #include <ztest.h>
 
+extern void test_conv_spd_xyz(void);
+extern void test_conv_ct_xyz(void);
+extern void test_conv_ct_rgb8(void);
+extern void test_conv_cct_xyy(void);
+extern void test_conv_cct_xyz(void);
+extern void test_conv_uv60_cct_ohno2011(void);
+extern void test_conv_uv60_cct_ohno2014(void);
+
 extern void test_complex_add(void);
 
 extern void test_interp_lerp(void);
@@ -105,6 +113,8 @@ extern void test_vector_zte(void);
 extern void test_vector_is_equal(void);
 extern void test_vector_is_nonneg(void);
 extern void test_vector_contains(void);
+extern void test_vector_quicksort(void);
+extern void test_vector_sort(void);
 
 extern void test_phy_atom_nucl_radius(void);
 extern void test_phy_atom_bohr_orb_radius(void);
@@ -267,9 +277,31 @@ extern void test_phy_work_x(void);
 extern void test_phy_work_y(void);
 extern void test_phy_work_kin(void);
 
+extern void test_sta_mean(void);
+extern void test_sta_percentile(void);
+extern void test_sta_median(void);
+extern void test_sta_quartiles(void);
+extern void test_sta_quart_range(void);
+extern void test_sta_mode(void);
+extern void test_sta_data_range(void);
+extern void test_sta_variance(void);
+extern void test_sta_standard_deviation(void);
+extern void test_sta_covariance(void);
+extern void test_sta_covariance_matrix(void);
+extern void test_sta_linear_regression(void);
+
+
 void test_main(void)
 {
 	ztest_test_suite(zsl_tests,
+
+	ztest_unit_test(test_conv_spd_xyz),
+	ztest_unit_test(test_conv_ct_xyz),
+	ztest_unit_test(test_conv_ct_rgb8),
+	ztest_unit_test(test_conv_cct_xyy),
+	ztest_unit_test(test_conv_cct_xyz),
+	ztest_unit_test(test_conv_uv60_cct_ohno2011),
+	ztest_unit_test(test_conv_uv60_cct_ohno2014),
 
 	ztest_unit_test(test_complex_add),
 
@@ -361,6 +393,8 @@ void test_main(void)
 	ztest_unit_test(test_vector_is_equal),
 	ztest_unit_test(test_vector_is_nonneg),
 	ztest_unit_test(test_vector_contains),
+	ztest_unit_test(test_vector_quicksort),
+	ztest_unit_test(test_vector_sort),
 
 	ztest_unit_test(test_phy_atom_nucl_radius),
 	ztest_unit_test(test_phy_atom_bohr_orb_radius),
@@ -521,7 +555,20 @@ void test_main(void)
 	ztest_unit_test(test_phy_work_module),
 	ztest_unit_test(test_phy_work_x),
 	ztest_unit_test(test_phy_work_y),
-	ztest_unit_test(test_phy_work_kin)
+	ztest_unit_test(test_phy_work_kin),
+
+	ztest_unit_test(test_sta_mean),
+	ztest_unit_test(test_sta_percentile),
+	ztest_unit_test(test_sta_median),
+	ztest_unit_test(test_sta_quartiles),
+	ztest_unit_test(test_sta_quart_range),
+	ztest_unit_test(test_sta_mode),
+	ztest_unit_test(test_sta_data_range),
+	ztest_unit_test(test_sta_variance),
+	ztest_unit_test(test_sta_standard_deviation),
+	ztest_unit_test(test_sta_covariance),
+	ztest_unit_test(test_sta_covariance_matrix),
+	ztest_unit_test(test_sta_linear_regression)
 
 	);
 

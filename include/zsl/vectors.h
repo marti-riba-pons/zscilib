@@ -388,6 +388,17 @@ bool zsl_vec_is_nonneg(struct zsl_vec *v);
  */
 int zsl_vec_contains(struct zsl_vec *v, zsl_real_t val, zsl_real_t eps);
 
+/**
+ * @brief Sorts the values in vector v from smallest to largest using quicksort,
+ *        and assigns the sorted output to vector w.
+ *
+ * @param v     The unsorted, input vector.
+ * @param w     The sorted, output vector.
+ *
+ * @return 0 if everything executed properly, otherwise a negative error code.
+ */
+int zsl_vec_sort(struct zsl_vec *v, struct zsl_vec *w);
+
 /** @} */ /* End of VEC_COMPARE group */
 
 /**
